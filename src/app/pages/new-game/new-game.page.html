@@ -1,0 +1,47 @@
+<ion-content class="ion-padding">
+  <div class="game-container">
+    <h1>Entrez les joueurs présent dans la partie</h1>
+
+    <div class="instructions">
+      <p>Il est conseillé d'être entre 3 à 8 joueur maximum</p>
+      <p>Pour des parties optimale.</p>
+      <p>Au delà de 8 joueurs faites des équipes de 2.</p>
+    </div>
+
+    <div class="input-container">
+      <ion-item class="player-input">
+        <ion-input
+          label="Ajouter joueur"
+          labelPlacement="floating"
+          placeholder="Input name"
+          [(ngModel)]="newPlayerName"
+          (ionChange)="handleInputChange($event)"
+        ></ion-input>
+      </ion-item>
+      <app-add-button (click)="addPlayer()"></app-add-button>
+
+    </div>
+
+    <div class="players-list">
+      @if (players$ | async; as players) {
+        @if (players.length === 0) {
+          <div class="empty-message">
+            Aucun joueur ajouté
+          </div>
+        }
+
+        @for (player of players; track player; let i = $index) {
+          <div class="player-item">
+            <span>{{ player.name }}</span>
+            <app-close-button (click)="removePlayer(i)"></app-close-button>
+          </div>
+        }
+      }
+    </div>
+
+    <div class="button-container">
+      <app-cancel-button (click)="cancel()"></app-cancel-button>
+      <app-validate-button (click)="validate()"></app-validate-button>
+    </div>
+  </div>
+</ion-content>

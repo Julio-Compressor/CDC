@@ -10,4 +10,8 @@ export const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full',
   },
+  {
+    path: 'new-game',
+    loadComponent: () => import('./pages/new-game/new-game.page').then( m => m.NewGamePage)
+  },
 ];
