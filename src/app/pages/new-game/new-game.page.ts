@@ -28,9 +28,12 @@ import {CancelButtonComponent} from "../../components/buttons/cancel-button/canc
     FormsModule,
     IonContent,
     IonInput,
-    IonButton,
     IonItem,
-    AsyncPipe, IonIcon, AddButtonComponent, CloseButtonComponent, ValidateButtonComponent, CancelButtonComponent]
+    AsyncPipe,
+    AddButtonComponent,
+    CloseButtonComponent,
+    ValidateButtonComponent,
+    CancelButtonComponent, IonLabel]
 })
 export class NewGamePage {
   players$: Observable<Player[]>;

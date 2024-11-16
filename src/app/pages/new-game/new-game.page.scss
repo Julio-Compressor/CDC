@@ -4,38 +4,29 @@
 }
 
 .game-container {
-  max-width: 800px;
+  max-width: 600px;
   margin: 0 auto;
   padding: 20px;
 
   h1 {
     text-align: center;
-    font-size: 24px;
-    margin-bottom: 30px;
-    color: var(--ion-text-color);
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: #333;
   }
 }
 
 .instructions {
-  background-color: var(--ion-color-light);
+  background-color: #f8f9fa;
   padding: 15px;
-  border-radius: 8px;
+  border-radius: 12px;
   margin-bottom: 25px;
-  border-left: 4px solid var(--ion-color-primary);
+  border-left: 4px solid #4285f4;
 
   p {
     margin: 5px 0;
-    color: var(--ion-color-medium);
+    color: #666;
     font-size: 14px;
-    line-height: 1.4;
-
-    &:first-child {
-      margin-top: 0;
-    }
-
-    &:last-child {
-      margin-bottom: 0;
-    }
   }
 }
 
@@ -43,86 +34,115 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 
-  .player-input {
+  .custom-input-item {
     flex: 1;
-    --background: var(--ion-color-light);
-    --border-radius: 8px;
-    --padding-start: 15px;
-    --padding-end: 15px;
+    --background: #ffffff;
+    --border-radius: 25px;
+    --border-color: #e0e0e0;
+    --padding-start: 20px;
+    --padding-end: 20px;
+    --min-height: 45px;
+    --highlight-height: 0; // Supprime la ligne de highlight par défaut
+
+    // Couleurs spécifiques pour les états
+    --highlight-color-focused: transparent;
+    --highlight-color-valid: transparent;
+    --highlight-color-invalid: transparent;
+
+    &::part(native) {
+      padding: 0;
+      min-height: 45px;
+    }
+
+    ion-label {
+      color: #333 !important; // Force la couleur noire
+      margin-left: 1rem;
+
+      &.label-floating {
+        color: #333 !important; // Garde la couleur noire même en floating
+        margin-left: 1rem;
+      }
+    }
 
     ion-input {
-      --padding-top: 12px;
-      --padding-bottom: 12px;
+      --padding-start: 0;
+      --padding-end: 0;
+      --placeholder-color: #999;
+      --placeholder-opacity: 1;
+      color: #333;
+      margin-left: 1rem;
+
+      &::part(native) {
+        caret-color: #333 !important; // Force la couleur du curseur en noir
+      }
     }
   }
 
-  .add-button {
-    --padding-start: 12px;
-    --padding-end: 12px;
-    --border-radius: 8px;
-    margin: 0;
+  // Supprime les effets de focus
+  ion-item.custom-input-item {
+    --border-style: none;
+    --inner-border-width: 0;
+    --border-width: 0;
+    --highlight-background: transparent;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    border-radius: 25px;
 
-    img {
-      width: 24px;
-      height: 24px;
+    &.item-has-focus {
+      --highlight-background: transparent;
+
+      ion-label {
+        color: #333 !important; // Garde la couleur noire même en focus
+      }
+    }
+
+    &.item-has-value {
+      ion-label {
+        color: #333 !important; // Garde la couleur noire même avec une valeur
+      }
+    }
+  }
+}
+
+// Supprime les lignes par défaut de ion-item
+ion-item.custom-input-item {
+  --border-style: none;
+  --inner-border-width: 0;
+  --border-width: 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  border-radius: 25px;
+
+  &.item-has-focus {
+    --highlight-background: transparent;
+    ion-label {
+      color: #4285f4;
     }
   }
 }
 
 .players-list {
-  margin: 25px 0;
+  margin: 20px 0;
 
   .empty-message {
     text-align: center;
-    color: var(--ion-color-medium);
-    padding: 30px;
-    background: var(--ion-color-light);
-    border-radius: 8px;
-    font-size: 14px;
+    color: #666;
+    padding: 20px;
   }
 
   .player-item {
     display: flex;
-    align-items: center; // Centre verticalement les éléments
-    padding: 8px 15px; // Réduit le padding vertical
-    margin: 8px 0;
-    background: var(--ion-color-light);
-    border-radius: 8px;
-    min-height: 45px; // Hauteur minimum fixe pour tous les items
-
-    &:hover {
-      background: var(--ion-color-light-shade);
-    }
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 20px;
+    margin: 10px 0;
+    background: #ffffff;
+    border-radius: 25px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
 
     span {
-      flex: 1;
       font-size: 16px;
-      color: var(--ion-text-color);
-      line-height: 1; // Ajuste la hauteur de ligne
-      display: flex;
-      align-items: center;
-    }
-
-    .remove-button {
-      --padding-start: 8px;
-      --padding-end: 8px;
-      --padding-top: 8px;
-      --padding-bottom: 8px;
-      margin: 0;
-      height: 35px; // Hauteur fixe pour le bouton
-      width: 35px; // Largeur fixe pour le bouton
-      --border-radius: 50%; // Bouton rond
-
-      img {
-        width: 20px;
-        height: 20px;
-      }
-
-      &:hover {
-        --background: var(--ion-color-danger-tint);
-      }
+      color: #333;
     }
   }
 }
@@ -132,74 +152,19 @@
   justify-content: space-between;
   gap: 15px;
   margin-top: 30px;
-  padding-top: 20px;
-  border-top: 1px solid var(--ion-color-light);
 
-  ion-button {
+  app-cancel-button,
+  app-validate-button {
     flex: 1;
-    --border-radius: 8px;
-    margin: 0;
-    height: 48px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-
-    &[color="danger"] {
-      --background: var(--ion-color-danger);
-      --background-hover: var(--ion-color-danger-shade);
-    }
-
-    &[color="success"] {
-      --background: var(--ion-color-success);
-      --background-hover: var(--ion-color-success-shade);
-    }
   }
 }
 
-// Media Queries pour la responsivité
 @media (max-width: 576px) {
   .game-container {
     padding: 15px;
   }
 
-  h1 {
-    font-size: 20px;
-  }
-
   .input-container {
-    flex-direction: column;
-    gap: 15px;
-
-    .player-input {
-      width: 100%;
-    }
-
-    .add-button {
-      width: 100%;
-    }
+    gap: 8px;
   }
-
-  .button-container {
-    flex-direction: column;
-
-    ion-button {
-      width: 100%;
-    }
-  }
-}
-
-// Animation pour l'apparition des joueurs
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.player-item {
-  animation: fadeIn 0.3s ease-out forwards;
 }
