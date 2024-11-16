@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonFab, IonFabButton, IonIcon } from "@ionic/angular/standalone";
+import {IonButton, IonIcon} from "@ionic/angular/standalone";
 import { addIcons } from 'ionicons';
 import { add } from 'ionicons/icons';
 
@@ -8,9 +8,8 @@ import { add } from 'ionicons/icons';
   templateUrl: './add-button.component.html',
   styleUrls: ['./add-button.component.scss'],
   imports: [
-    IonFab,
-    IonFabButton,
-    IonIcon
+    IonIcon,
+    IonButton
   ],
   standalone: true
 })
