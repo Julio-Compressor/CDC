@@ -1,13 +1,15 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>initialisation</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <h1>En garde ! La partie va commencer</h1>
-  <p>Chacun lance un dès, le plus petit
-    nombre commence</p>
-  <p>La partie se déroule dans le sens
-    Inverse des aiguilles d'une montre </p>
+  <div class="game-container">
+    <h1>En garde ! La partie va commencer</h1>
+    <div class="instructions">
+      <p>Chacun lance un dès, le plus petit
+        nombre commence</p>
+      <p>La partie se déroule dans le sens
+        Inverse des aiguilles d'une montre </p>
+    </div>
+    <div class="button-container">
+      <app-cancel-button buttonText="Retour" (click)="return()"></app-cancel-button>
+      <app-validate-button (click)="validate()"></app-validate-button>
+    </div>
+  </div>
 </ion-content>

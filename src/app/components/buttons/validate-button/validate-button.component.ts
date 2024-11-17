@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input, input} from '@angular/core';
 import {IonButton} from "@ionic/angular/standalone";
 
 @Component({
@@ -12,6 +12,7 @@ import {IonButton} from "@ionic/angular/standalone";
 
 })
 export class ValidateButtonComponent {
+  @Input() buttonText: string = 'Continuer';
 
   constructor() { }
 

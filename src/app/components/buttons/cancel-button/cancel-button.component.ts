@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {IonButton} from "@ionic/angular/standalone";
 
 @Component({
@@ -11,6 +11,7 @@ import {IonButton} from "@ionic/angular/standalone";
   standalone: true
 })
 export class CancelButtonComponent {
+  @Input() buttonText: string = 'Retour';
 
   constructor() { }
 
