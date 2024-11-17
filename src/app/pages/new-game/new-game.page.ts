@@ -72,7 +72,7 @@ export class NewGamePage {
 
   validate() {
     this.playerService.saveCurrentGame();
-    // this.router.navigate(['/game']);
+    this.router.navigate(['/initialisation']);
   }
 }
 
